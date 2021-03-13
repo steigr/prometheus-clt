@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: origin-console
+  name: origin-console
+  namespace: kube-system
+spec:
+  ports:
+    - name: http
+      port: 9000
+      protocol: TCP
+      targetPort: http
+  selector:
+    app: origin-console
+  type: NodePort

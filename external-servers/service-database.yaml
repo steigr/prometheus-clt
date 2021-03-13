@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: database
+  namespace: default
+  labels:
+    app: database
+    metric-router: true
+    metric-mysql: true
+    metric-node: true
+spec:
+  type: ExternalName
+  externalName: database.server
+  ports:
+    - name: metrics
+      port: 9090

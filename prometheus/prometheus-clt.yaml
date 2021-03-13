@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: clt
+  namespace: default
+spec:
+  serviceAccountName: prometheus
+  enableAdminAPI: false
+  resources:
+    requests:
+      memory: 400Mi
+  serviceMonitorSelector:
+    matchLabels:
+      app: prometheus

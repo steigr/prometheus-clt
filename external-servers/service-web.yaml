@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: web
+  namespace: default
+  labels:
+    app: web
+    metric-router: true
+    metric-httpd2: true
+    metric-node: true
+spec:
+  type: ExternalName
+  externalName: web.server
+  ports:
+    - name: metrics
+      port: 9090

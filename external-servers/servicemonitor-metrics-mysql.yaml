@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: mysql
+  namespace: default
+  labels:
+    app: prometheus
+spec:
+  selector:
+    matchLabels:
+      metric-mysql: active
+  endpoints:
+    - port: metrics
+      path: /metrics/mysql

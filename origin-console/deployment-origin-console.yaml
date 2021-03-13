@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: origin-console
+  name: origin-console
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: origin-console
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: origin-console
+    spec:
+      serviceAccountName: origin-console
+      containers:
+        - image: quay.io/openshift/origin-console:4.9.0
+          imagePullPolicy: IfNotPresent
+          name: console
+          ports:
+            - containerPort: 9000
+              protocol: TCP
+              name: http

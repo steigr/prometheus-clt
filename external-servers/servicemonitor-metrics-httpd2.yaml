@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: httpd2
+  namespace: default
+  labels:
+    app: prometheus
+spec:
+  selector:
+    matchLabels:
+      metric-httpd2: active
+  endpoints:
+    - port: metrics
+      path: /metrics/httpd2
